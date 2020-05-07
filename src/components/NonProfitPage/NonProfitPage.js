@@ -10,6 +10,7 @@ class NonProfitPage extends Component {
     organizationName: "",
     contactName: "",
     address: "",
+    phone: "",
     email: "",
     password: "",
     missionStatement: "",
@@ -55,6 +56,12 @@ class NonProfitPage extends Component {
             placeholder="Address"
             label="Address"
             onChange={this.changeRegistrationField("address")}
+          />
+          <TextField
+            type="number"
+            placeholder="Phone"
+            label="Phone"
+            onChange={this.changeRegistrationField("phone")}
           />
           <TextField
             type="text"
