@@ -29,6 +29,7 @@ class NonProfitPage extends Component {
       type: "NONPROFIT_REGISTER",
       payload: this.state,
     });
+    this.props.history.push("/events");
   };
 
   render() {

@@ -20,6 +20,7 @@ import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import NonProfitPage from "../NonProfitPage/NonProfitPage";
+import EventsPage from "../EventsPage/EventsPage";
 
 import "./App.css";
 
@@ -67,6 +68,7 @@ class App extends Component {
               path="/registration-nonprofit"
               component={NonProfitPage}
             />
+            <ProtectedRoute exact path="/events" component={EventsPage} />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
