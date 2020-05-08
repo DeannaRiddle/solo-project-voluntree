@@ -85,4 +85,4 @@ class VolunteerPage extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(NonProfitPage);
+export default connect(mapStoreToProps)(VolunteerPage);

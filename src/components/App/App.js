@@ -21,6 +21,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import NonProfitPage from "../NonProfitPage/NonProfitPage";
 import EventsPage from "../EventsPage/EventsPage";
+import VolunteerPage from "../VolunteerPage/VolunteerPage";
 
 import "./App.css";
 
@@ -67,6 +68,11 @@ class App extends Component {
               exact
               path="/registration-nonprofit"
               component={NonProfitPage}
+            />
+            <Route
+              exact
+              path="/registration-volunteer"
+              component={VolunteerPage}
             />
             <ProtectedRoute exact path="/events" component={EventsPage} />
 
