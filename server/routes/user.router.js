@@ -14,9 +14,8 @@ router.get("/", rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
-// Handles POST request with new user data
-// The only thing different from this and every other post we've seen
-// is that the password gets encrypted before being inserted
+// Handles POST request with new Non-Profit user data
+
 router.post("/register/nonprofit", (req, res, next) => {
   const username = req.body.email;
   const password = encryptLib.encryptPassword(req.body.password);
@@ -52,6 +51,45 @@ router.post("/register/nonprofit", (req, res, next) => {
     })
     .catch((err) => {
       console.log("NONPROFIT INSERT:", err);
+      res.sendStatus(500);
+    });
+});
+// Handles POST request with new Volunteer user data
+router.post("/register/volunteer", (req, res, next) => {
+  const username = req.body.email;
+  const password = encryptLib.encryptPassword(req.body.password);
+  const nonProfitData = req.body;
+
+  // volunteer user query
+  const queryTextVolunteer = `INSERT INTO "volunteer_users" ("first_name", "last_name", "address", "email","phone", "why_volunteer")
+  VALUES ($1, $2, $3, $4, $5, $6)
+  RETURNING "id";`;
+
+  pool
+    .query(queryTextVolunteer, [
+      volunteerData.firstName,
+      volunteerData.lastName,
+      volunteerData.address,
+      volunteerData.email,
+      volunteerData.phone,
+      volunteerData.whyVolunteer,
+    ])
+    .then((response) => {
+      const volunteerUserId = response.rows[0].id;
+
+      // RUN SECOND QUERY FOR USER AUTHENTICATION
+      const queryText =
+        'INSERT INTO "user" (username, password, volunteer_id) VALUES ($1, $2, $3) RETURNING id';
+      pool
+        .query(queryText, [username, password, volunteerId])
+        .then(() => res.sendStatus(201))
+        .catch((err) => {
+          console.log("USER INSERT:", err);
+          res.sendStatus(500);
+        });
+    })
+    .catch((err) => {
+      console.log("VOLUNTEER INSERT:", err);
       res.sendStatus(500);
     });
 });
