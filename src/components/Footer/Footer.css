@@ -2,3 +2,16 @@ footer {
   margin-top: 80px;
   padding: 100px;
 }
+
+.footer-container {
+  font-size: 18px;
+  font-weight: 700;
+  display: inline-block;
+  margin-left: inherit;
+  padding: 10px;
+}
+.footer-quote {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(22, 182, 100, 0.892);
+}

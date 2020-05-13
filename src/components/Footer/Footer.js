@@ -8,7 +8,11 @@ import "./Footer.css";
 
 const Footer = () => (
   <footer>
-    <p> ONE OF THE GREATEST GIFTS YOU CAN GIVE, IS YOUR TIME </p>
+    <div className="footer-container">
+      <p className="footer-quote">
+        ONE OF THE GREATEST GIFTS YOU CAN GIVE, IS YOUR TIME!
+      </p>
+    </div>
   </footer>
 );
 

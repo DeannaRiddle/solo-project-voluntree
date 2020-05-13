@@ -10,7 +10,7 @@ class EventsPage extends Component {
   render() {
     return (
       <div>
-        <h2>{this.state.heading}</h2>
+        <h2>{this.state.eventTable}</h2>
       </div>
     );
   }
