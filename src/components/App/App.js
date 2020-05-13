@@ -75,6 +75,7 @@ class App extends Component {
               component={VolunteerPage}
             />
             <ProtectedRoute exact path="/events" component={EventsPage} />
+            <Route exact path="/" component={VolunteerPage} />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

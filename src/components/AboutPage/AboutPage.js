@@ -8,7 +8,7 @@ import React from "react";
 const AboutPage = () => (
   <div>
     <div>
-      <p>
+      <p className="about-info">
         Our founder Deanna Riddle discovered a need to connect Non-Profit
         Organizations and Volunteers. Deanna had the desire to volunteer her
         time, with a busy schedule it proved difficult to seek an Organization

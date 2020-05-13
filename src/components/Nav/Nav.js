@@ -17,6 +17,7 @@ const Nav = (props) => {
   }
 
   return (
+    
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">VolunTree</h2>

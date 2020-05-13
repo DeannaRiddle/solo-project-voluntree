@@ -58,7 +58,7 @@ router.post("/register/nonprofit", (req, res, next) => {
 router.post("/register/volunteer", (req, res, next) => {
   const username = req.body.email;
   const password = encryptLib.encryptPassword(req.body.password);
-  const nonProfitData = req.body;
+  const volunteerData = req.body;
 
   // volunteer user query
   const queryTextVolunteer = `INSERT INTO "volunteer_users" ("first_name", "last_name", "address", "email","phone", "why_volunteer")
@@ -75,7 +75,7 @@ router.post("/register/volunteer", (req, res, next) => {
       volunteerData.whyVolunteer,
     ])
     .then((response) => {
-      const volunteerUserId = response.rows[0].id;
+      const volunteerId = response.rows[0].id;
 
       // RUN SECOND QUERY FOR USER AUTHENTICATION
       const queryText =

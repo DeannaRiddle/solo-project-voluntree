@@ -5,7 +5,7 @@ import mapStoreToProps from "../../redux/mapStoreToProps";
 // material components
 import { TextField, Button } from "@material-ui/core";
 
-class NewEventsFormPage extends Component {
+class NewEventsForm extends Component {
   state = {
     eventName: "",
     eventDate: "",
@@ -33,10 +33,10 @@ class NewEventsFormPage extends Component {
     event.preventDefault();
 
     this.props.dispatch({
-      type: "NEW_EVENT",
+      type: "POST_NEW_EVENT",
       payload: this.state,
     });
-    this.props.history.push("/event");
+    // this.props.history.push("/event");
   };
 
   render() {
@@ -140,4 +140,4 @@ class NewEventsFormPage extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(NewEventsPage);
+export default connect(mapStoreToProps)(NewEventsForm);
