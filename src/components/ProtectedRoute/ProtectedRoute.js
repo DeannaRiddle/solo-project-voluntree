@@ -1,12 +1,11 @@
-import React from 'react';
-import {
-  Route,
-  Redirect,
-} from 'react-router-dom'
-import {connect} from 'react-redux';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
+import mapStoreToProps from "../../redux/mapStoreToProps";
+import NonProfitPage from "../NonProfitPage/NonProfitPage";
+import VolunteerPage from "../VolunteerPage/VolunteerPage";
 
 // A Custom Wrapper Component -- This will keep our code DRY.
 // Responsible for watching redux state, and returning an appropriate component
@@ -36,10 +35,14 @@ const ProtectedRoute = (props) => {
     // if the user is logged in (only logged in users have ids)
     // show the component that is protected
     ComponentToShow = ComponentToProtect;
-  } else if (store.loginMode === 'login') {
+  } else if (store.loginMode === "login") {
     // if they are not logged in, check the loginMode on Redux State
     // if the mode is 'login', show the LoginPage
     ComponentToShow = LoginPage;
+  } else if (store.loginMode === "register-none") {
+    ComponentToShow = NonProfitPage;
+  } else if (store.loginMode === "register-none") {
+    ComponentToShow = VolunteerPage;
   } else {
     // the the user is not logged in and the mode is not 'login'
     // show the RegisterPage
@@ -53,15 +56,13 @@ const ProtectedRoute = (props) => {
 
   // We return a Route component that gets added to our list of routes
   return (
-      <Route
-        // all props like 'exact' and 'path' that were passed in
-        // are now passed along to the 'Route' Component
-        {...otherProps}
-        component={ComponentToShow}
-      />
-  )
-}
+    <Route
+      // all props like 'exact' and 'path' that were passed in
+      // are now passed along to the 'Route' Component
+      {...otherProps}
+      component={ComponentToShow}
+    />
+  );
+};
 
-export default connect(mapStoreToProps)(ProtectedRoute)
-
-
+export default connect(mapStoreToProps)(ProtectedRoute);

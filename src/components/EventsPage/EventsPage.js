@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import mapStoreToProps from "../../redux/mapStoreToProps";
 import NewEventsForm from "../NewEventsForm/NewEventsForm";
+import EventsList from "../EventsList/EventsList";
 
 class EventsPage extends Component {
   state = {
@@ -15,6 +16,7 @@ class EventsPage extends Component {
       <div>
         <NewEventsForm />
         <p className="event-intro">Events</p>
+        <EventsList />
       </div>
     );
   }

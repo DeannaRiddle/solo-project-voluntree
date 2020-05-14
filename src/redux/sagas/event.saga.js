@@ -3,7 +3,13 @@ import axios from "axios";
 //get events from New Events Form
 function* getEvents(action) {
   try {
-    // yield put({ type: "LOGIN", payload: action.payload });
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+
+    const response = yield axios.get("/api/events/", config);
+    yield put({ type: "SET_EVENT_DATA", payload: response.data });
   } catch (error) {}
 }
 
@@ -11,13 +17,7 @@ function* getEvents(action) {
 function* registerNewEvent(action) {
   try {
     yield axios.post("/api/events/", action.payload);
-
-    // yield put({
-    //   type: "NEW_EVENT",
-    //   payload: {},
-    // });
-
-    // yield put({ type: "SET_TO_LOGIN_MODE" });
+    yield put({ type: "GET_EVENTS_DATA" });
   } catch (error) {
     console.log("Error with posting event:", error);
     // yield put({ type: "REGISTRATION_FAILED" });

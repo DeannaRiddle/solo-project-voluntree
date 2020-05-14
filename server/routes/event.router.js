@@ -5,7 +5,19 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+  const queryString = `SELECT * FROM "events";`;
+
+  pool
+    .query(queryString)
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((err) => {
+      console.warn(err);
+      res.sendStatus(500);
+    });
+});
 
 /**
  * POST route template
